@@ -1,0 +1,81 @@
+<div class="wrapper">
+  <div class="header-wrapper">
+    <app-header></app-header>
+  </div>
+  <main>
+    <!--### Top main ###-->
+    <div class="top">
+      <div class="container">
+        <ul>
+          <li><a href="#">All Courses</a></li>
+          <li>
+            <i class="fa-solid fa-chevron-right"></i
+            ><a href="#">Data Analyst</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-section ">
+      <div class="container">
+        <!--Search-->
+        <div class="seach-and-nav-container">
+          <input type="text" placeholder="Search Courses..." name="search" />
+          <h4
+            (click)="handleShowCoursesListMobile()"
+            class="btn-toggle-menu-mobile"
+          >
+            Courses
+            <i
+              class="fa-solid "
+              [ngClass]="menuCourses ? 'fa-chevron-up' : 'fa-chevron-down'"
+            ></i>
+          </h4>
+          <ul class="nav" [ngClass]="menuCourses ? 'toggleViewMenuMobile' : ''">
+            <li *ngFor="let nav of navList">
+              <a [href]="nav.url">{{ nav.name }}</a>
+            </li>
+          </ul>
+        </div>
+        <!--Courses-->
+        <div class="courses-content">
+          <div class="course" *ngFor="let course of courseList">
+            <div class="header">
+              <img [src]="course.urlImg" [alt]="course.title" />
+              <span class="rate" *ngIf="course.rate"
+                ><i class="fa-solid fa-star"></i>{{ course.rate }}</span
+              >
+            </div>
+            <div class="body">
+              <h3 class="title">{{ course.title }}</h3>
+              <p class="description">{{ course.description }}</p>
+              <div class="details">
+                <span class="hours"
+                  ><i class="fa-regular fa-clock"></i
+                  >{{ course.duration }} Hours</span
+                >
+                <span class="duration"
+                  ><i class="fa-solid fa-graduation-cap"></i
+                  >{{ course.nbrCourses }} Courses</span
+                >
+                <span class="edtudiants"
+                  ><i class="fa-solid fa-user-group"></i
+                  >{{ course.nbrEtudiants }} Students</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Pagination-->
+        <div class="pagination-container container">
+          <ul class="pagination">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>...</li>
+            <li>8</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

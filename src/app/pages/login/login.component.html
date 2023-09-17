@@ -1,0 +1,142 @@
+<div class="wrapper">
+  <div class="container">
+    <!--Image-->
+    <div class="img-container">
+      <div class="text">
+        <h1 class="title">
+          Lorem Ipsum is simply
+        </h1>
+        <p class="description">Lorem Ipsum is simply</p>
+      </div>
+    </div>
+    <!--Formulaire-->
+    <div class="form-container">
+      <div class="top">
+        <img
+          src="./assets/login/img-login2..svg"
+          alt="image illustration"
+        />
+        <div class="btn-toggle-form">
+          <button class="login btn">Login</button>
+          <button class="register btn" (click)="handleGotoRegister()">
+            Register
+          </button>
+        </div>
+      </div>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="text">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry.
+        </div>
+        <div class="form-content">
+          <label
+            for="name"
+            [ngClass]="
+              myForm.controls['name'] &&
+              myForm.controls['name'].invalid &&
+              (myForm.controls['name'].dirty || myForm.controls['name'].touched)
+                ? 'error'
+                : ''
+            "
+          >
+            <span>User name</span>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your User name"
+              required
+              minlength="6"
+              [(ngModel)]="userData.name"
+            />
+            <div
+              class="message-error"
+              *ngIf="
+                myForm.controls['name']?.invalid &&
+                (myForm.controls['name'].dirty ||
+                  myForm.controls['name'].touched)
+              "
+            >
+              <div *ngIf="myForm.controls['name'].errors?.['required']">
+                Le nom est requis.
+              </div>
+              <div *ngIf="myForm.controls['name'].errors?.['minlength']">
+                Le nom doit avoir au moins 6 caractères.
+              </div>
+            </div>
+          </label>
+          <label
+            for="password"
+            class="password"
+            [ngClass]="
+              myForm.controls['password'] &&
+              myForm.controls['password'].invalid &&
+              (myForm.controls['password'].dirty ||
+                myForm.controls['password'].touched)
+                ? 'error'
+                : ''
+            "
+          >
+            <span>Password</span>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your Password"
+                required
+                [(ngModel)]="userData.password"
+                required
+                minlength="6"
+              />
+              <span class="eye" id="toggle-password"
+                ><i
+                  class="fa-solid fa-eye-slash"
+                  (click)="togglePasswordView()"
+                ></i
+              ></span>
+            </div>
+            <div
+              class="message-error"
+              *ngIf="
+                myForm.controls['password']?.invalid &&
+                (myForm.controls['password'].dirty ||
+                  myForm.controls['password'].touched)
+              "
+            >
+              <div *ngIf="myForm.controls['password'].errors?.['required']">
+                Le mot de passe est requis.
+              </div>
+              <div *ngIf="myForm.controls['password'].errors?.['minlength']">
+                Le mot de passe doit avoir au moins 6 caractères.
+              </div>
+            </div>
+          </label>
+          <div class="check-container">
+            <label class="check">
+              <span
+                class="input-check"
+                [ngClass]="checkRemember ? 'checked' : ''"
+                (click)="handleToggleCheckbox()"
+              >
+                <i class="fa-solid fa-check"></i>
+              </span>
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-pass">Forgot Password ?</a>
+          </div>
+        </div>
+        <div class="btn-submit-container">
+          <button
+            class="btn"
+            type="submit"
+            [disabled]="!myForm.valid"
+            [ngClass]="myForm.valid ? 'disable' : ''"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

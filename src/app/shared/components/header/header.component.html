@@ -1,0 +1,115 @@
+<div class="wrapper" [ngClass]="menuMobile ? 'menu-mobile-visible' : ''">
+  <div class="container">
+    <h2 class="logo">DATABEEZ ACADEMY</h2>
+    <ul class="nav">
+      <li class="link" *ngFor="let link of navAdresses">
+        <a [href]="link.url">{{ link.name }}</a>
+      </li>
+    </ul>
+    <div class="profil-container">
+      <!--Languages-->
+      <div class="langues-container">
+        <div class="current-lang">
+          <span class="name">{{ currentLang.name }}</span>
+          <span class="btn-toggle-menu-lang">
+            <i
+              class="fa-solid "
+              (click)="handleToggleMenuLang()"
+              [ngClass]="menuListLang ? 'fa-chevron-up' : 'fa-chevron-down'"
+            ></i>
+          </span>
+        </div>
+        <ul class="list-langue" *ngIf="menuListLang">
+          <li
+            class="langue-item"
+            *ngFor="let lang of langList"
+            (click)="handleChangeLang(lang)"
+          >
+            {{ lang.val }}
+          </li>
+        </ul>
+      </div>
+      <!--Profil-->
+      <div class="profil">
+        <div class="user-details">
+          <div class="user-img">
+            <img src="../../../../assets/user/user.svg" alt="" />
+          </div>
+          <div class="user-name">
+            <h4 class="name">Jeylani</h4>
+            <span class="status">Learner</span>
+            <div
+              class="option-user"
+              *ngIf="optionUser"
+              (click)="handleLogout()"
+            >
+              <span class="logout" (click)="handleLogout()">Logout</span>
+            </div>
+          </div>
+        </div>
+        <span class="btn-toggle-profil" (click)="handleToggleOptionUSer()">
+          <i
+            class="fa-solid "
+            [ngClass]="optionUser ? 'fa-chevron-up' : 'fa-chevron-down'"
+          ></i>
+        </span>
+      </div>
+    </div>
+    <span class="btn-toggle-Menu-Mobile" (click)="handleToggleMenuMbobile()"
+      ><i class="fa-solid fa-bars"></i
+    ></span>
+    <!--Menu Mobile-->
+    <div class="modal-menu-mobile" *ngIf="menuMobile">
+      <div class="menu-mobile-wrapper">
+        <div class="profil-container">
+          <div class="user-details">
+            <div class="user-img">
+              <img src="../../../../assets/user/user.svg" alt="" />
+            </div>
+            <div class="user-name">
+              <h4 class="name">Jeylani</h4>
+              <span class="status">Learner</span>
+            </div>
+          </div>
+          <span
+            class="btn-close-menu-mobile"
+            (click)="handleToggleMenuMbobile()"
+            ><i class="fa-solid fa-xmark"></i>
+          </span>
+        </div>
+        <div class="bottom">
+          <ul class="nav">
+            <li class="link" *ngFor="let link of navAdresses">
+              <a [href]="link.url">{{ link.name }}</a>
+            </li>
+          </ul>
+          <!--Languages-->
+          <div class="langues-container">
+            <div class="current-lang">
+              <span class="name">{{ currentLang.name }}</span>
+              <span class="btn-toggle-menu-lang btn-toggle-menu-lang-mobile">
+                <i
+                  class="fa-solid "
+                  (click)="handleToggleMenuLang()"
+                  [ngClass]="menuListLang ? 'fa-chevron-up' : 'fa-chevron-down'"
+                ></i>
+              </span>
+            </div>
+            <ul class="list-langue list-langue-mobile" *ngIf="menuListLang">
+              <li
+                class="langue-item"
+                *ngFor="let lang of langList"
+                (click)="handleChangeLang(lang)"
+              >
+                {{ lang.val }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="logout" (click)="handleLogout()">
+          Log out
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

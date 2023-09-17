@@ -1,0 +1,45 @@
+//Colors
+$DarkBlue: #282938;
+$MidnightBlue: #0e1032;
+$PaleSkyBlue: #f5faff;
+
+$white: #ffffff;
+$CreamyWhite: #fffefc;
+$black: #000000;
+
+$DarkGray: #282938;
+$MediumGray: #656565;
+$LightGray: #f5f5f5;
+$LightSilverGray: #c4c4c4;
+
+$GoldYellow: #d5a007;
+$PaleGold: #fcd980;
+$GoldenYellowWithOpacity: #d5a00799;
+
+$correct: #63bfad;
+$error: #f44336;
+
+//Layout
+$Desktop: 1440px;
+$Tablette: 768px;
+$Mobile: 400px;
+
+@mixin shadowForm() {
+  box-shadow: 0px 8px 24px 0px rgba(1, 12, 21, 0.04);
+  border-radius: 4px;
+}
+
+.btn {
+  font-size: 16px;
+  font-weight: 500;
+  color: $white;
+
+  background-color: $GoldYellow;
+  border: 2px solid $GoldYellow;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background-color: $GoldenYellowWithOpacity !important;
+  }
+}

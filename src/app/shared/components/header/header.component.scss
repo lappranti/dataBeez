@@ -1,0 +1,378 @@
+@import "../../style/variables";
+
+.wrapper {
+  width: 100%;
+  height: 90px;
+
+  background-color: $GoldYellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.menu-mobile-visible {
+    position: fixed;
+  }
+
+  transition: all 0.4s ease-in-out;
+  * {
+    transition: all 0.4s ease-in-out;
+  }
+
+  @media only screen and (max-width: 850px) {
+    height: 80px;
+  }
+}
+
+.container {
+  max-width: $Desktop;
+  width: 100%;
+  height: 100%;
+
+  //outline: 1px solid $white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+  padding: 0 70px;
+
+  @media only screen and (max-width: $Desktop) {
+    padding: 0 24px;
+  }
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 140%; /* 33.6px */
+  letter-spacing: 0.12px;
+  color: $white;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 22px;
+    line-height: 120%;
+  }
+  @media only screen and (max-width: $Mobile) {
+    font-size: 20px;
+  }
+}
+
+//###Btn toggle menu mobile
+.btn-toggle-Menu-Mobile {
+  display: none;
+
+  i {
+    font-size: 20px;
+    color: $white;
+    cursor: pointer;
+  }
+
+  @media only screen and (max-width: 850px) {
+    display: block;
+  }
+}
+
+//### Navigation Destop
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  .link {
+    &:hover {
+      a {
+        font-weight: 700;
+      }
+    }
+  }
+
+  a {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color: $white;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    gap: 16px;
+    a {
+      font-size: 15px;
+      line-height: 120px;
+    }
+  }
+
+  @media only screen and (max-width: 850px) {
+    display: none;
+  }
+}
+//### Profil Style
+.profil-container {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+
+  .profil {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+  }
+
+  .user-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .user-img {
+      width: 42px;
+      height: 42px;
+
+      img {
+        //display: block;
+        width: 100%;
+      }
+    }
+
+    .user-name {
+      display: flex;
+      flex-direction: column;
+      color: $white;
+      position: relative;
+
+      .name {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 150%;
+      }
+
+      .status {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 150%;
+        color: #ffffff70;
+      }
+
+      .option-user {
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        background-color: $white;
+        color: $black;
+
+        padding: 8px 16px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 0.25rem;
+        box-shadow: 0px 8px 24px 0px rgba(1, 12, 21, 0.04);
+
+        .logout {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .btn-toggle-profil {
+    i {
+      font-size: 16px;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    gap: 24px;
+  }
+
+  @media only screen and (max-width: 850px) {
+    display: none;
+  }
+}
+
+.langues-container {
+  position: relative;
+  color: $white;
+
+  .current-lang {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .name {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 150%;
+    }
+
+    i {
+      cursor: pointer;
+      font-size: 16px;
+    }
+  }
+
+  .list-langue {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 140px;
+
+    background-color: $white;
+    color: $black;
+    padding: 8px 0;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    box-shadow: 0px 8px 24px 0px rgba(1, 12, 21, 0.04);
+
+    li {
+      padding: 4px 16px;
+      cursor: pointer;
+
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+  @media only screen and (max-width: 850px) {
+    display: none;
+  }
+}
+
+//### Menu Mobile
+.modal-menu-mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  background-color: transparent;
+}
+.menu-mobile-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 254px;
+
+  background-color: $GoldYellow;
+  display: none;
+  flex-direction: column;
+  gap: 35px;
+
+  .profil-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding: 24px 24px 0;
+    margin-bottom: 13px;
+
+    .user-details {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 21px;
+
+      .user-img {
+        height: 83px;
+        width: 83px;
+      }
+
+      .user-name {
+        gap: 5px;
+
+        .name {
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 150%;
+        }
+
+        .status {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 150%;
+        }
+      }
+    }
+  }
+
+  .btn-close-menu-mobile {
+    i {
+      font-size: 20px;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+
+    padding: 0 24px;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 35px;
+
+    li {
+      &:hover {
+        a {
+          font-weight: 700;
+        }
+      }
+    }
+
+    a {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 150%;
+    }
+  }
+
+  .langues-container {
+    display: flex;
+  }
+
+  .logout {
+    color: $white;
+    padding-left: 24px;
+    cursor: pointer;
+    border-top: 1px solid $white;
+
+    padding: 34px 0 28px 24px;
+    margin-top: auto;
+
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  @media only screen and (max-width: 850px) {
+    display: flex;
+  }
+
+  @media only screen and (max-width: $Mobile) {
+    // gap: 32px;
+
+    .profil-container {
+      .user-details {
+        gap: 12px;
+
+        .user-name {
+          gap: 0;
+        }
+
+        .user-img {
+          height: 48px;
+          width: 48px;
+        }
+      }
+    }
+
+    .nav {
+      gap: 24px;
+    }
+  }
+}

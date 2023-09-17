@@ -1,0 +1,414 @@
+@import "../../shared/style/variables";
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  * {
+    transition: all 0.4s ease-in-out;
+  }
+}
+
+.header-wrapper {
+  position: relative;
+  z-index: 100;
+}
+main {
+  flex: auto;
+  outline: 1px solid red;
+}
+
+.container {
+  max-width: $Desktop;
+  width: 100%;
+
+  margin: 0 auto;
+  padding: 0 70px;
+
+  @media only screen and (max-width: $Desktop) {
+    padding: 0 24px;
+  }
+}
+
+.top {
+  width: 100%;
+  height: 86px;
+  background-color: $PaleSkyBlue;
+
+  .container {
+    height: 100%;
+  }
+
+  ul {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      i {
+        font-size: 16px;
+        color: $DarkBlue;
+      }
+    }
+
+    a {
+      color: $DarkBlue;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 28px;
+    }
+  }
+}
+
+.main-section {
+  .container {
+    height: 100%;
+    padding-top: 125px;
+    padding-bottom: 79px;
+
+    @media only screen and (max-width: $Tablette) {
+      padding-top: 90px;
+    }
+  }
+
+  //Search et navigation
+  .seach-and-nav-container {
+    max-width: 746px;
+    width: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+
+    position: relative;
+    z-index: 2;
+
+    input {
+      height: 64px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(213, 160, 7, 0.6);
+
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 150%; /* 30px */
+      letter-spacing: 0.1px;
+      color: $black;
+
+      outline-color: rgba(213, 160, 7, 0.6);
+
+      &::placeholder {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 150%; /* 30px */
+        letter-spacing: 0.1px;
+        color: #28293880;
+      }
+    }
+    h4 {
+      display: none;
+    }
+
+    ul {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      li {
+        &:hover {
+          a {
+            font-weight: 900;
+            color: #0e103270;
+          }
+        }
+      }
+
+      a {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 32px;
+        color: #28293870;
+      }
+    }
+
+    @media only screen and (max-width: $Tablette) {
+      gap: 32px;
+
+      ul {
+        a {
+          font-size: 16px;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      gap: 24px;
+
+      input {
+        height: 55px;
+
+        padding: 0 16px;
+        font-size: 16px;
+
+        &::placeholder {
+          font-size: 16px;
+        }
+      }
+
+      h4 {
+        max-width: 220px;
+        width: 100%;
+        margin-left: auto;
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+
+        padding: 8px 16px;
+
+        border-radius: 4px;
+        border: 1px solid #dee0e3;
+        box-shadow: 0px 8px 24px 0px rgba(1, 12, 21, 0.04);
+        cursor: pointer;
+
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 150%; /* 30px */
+        letter-spacing: 0.1px;
+        color: #28293880;
+      }
+
+      ul {
+        position: absolute;
+        top: 130px;
+        right: 0;
+        z-index: 10;
+        background-color: $white;
+
+        max-width: 220px;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        //outline: 1px solid green;
+        padding: 8px 0;
+
+        border-radius: 4px;
+        border: 1px solid #dee0e3;
+        box-shadow: 0px 8px 24px 0px rgba(1, 12, 21, 0.04);
+
+        margin-left: auto;
+        display: none;
+
+        li {
+          //outline: 1px solid red;
+          padding: 5px 16px;
+          width: 100%;
+
+          &:hover {
+            a {
+              font-weight: 600;
+            }
+          }
+        }
+
+        a {
+          font-size: 16px;
+        }
+
+        &.toggleViewMenuMobile {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  //Cours
+  .courses-content {
+    padding: 125px 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: calc((70px / 1440px) * 100%);
+    row-gap: calc((95px / 100%) * 100%);
+
+    .course {
+      max-width: 385px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      border-radius: 10px 10px 0px 0px;
+      cursor: pointer;
+
+      .header {
+        width: 100%;
+        position: relative;
+        img {
+          width: 100%;
+        }
+
+        .rate {
+          position: absolute;
+          bottom: -5px;
+          right: 10px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          border-radius: 12px;
+
+          width: 63px;
+          height: 25px;
+          background-color: $GoldYellow;
+
+          font-size: 12px;
+          font-weight: 500;
+          line-height: 150%;
+          color: $white;
+
+          i {
+            font-size: 12px;
+            margin-top: -2px;
+          }
+        }
+      }
+
+      .body {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 140%; /* 33.6px */
+        letter-spacing: 0.12px;
+        color: $DarkBlue;
+      }
+
+      .description {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: #28293860;
+      }
+
+      .details {
+        display: flex;
+        align-items: center;
+        //justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        margin-top: 20px;
+
+        span {
+          color: #28293890;
+          font-size: 15px;
+          font-weight: 400;
+          line-height: 150%;
+
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+        }
+
+        i {
+          font-size: 16px;
+        }
+      }
+      @media only screen and (max-width: $Desktop) {
+        .title {
+          font-size: 20px;
+        }
+        .description {
+          font-size: 12px;
+        }
+      }
+      @media only screen and (max-width: $Mobile) {
+        gap: 16px;
+      }
+    }
+
+    @media only screen and (max-width: $Tablette) {
+      // padding: 110px 0;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media only screen and (max-width: 600px) {
+      padding: 100px 0;
+    }
+    @media only screen and (max-width: 550px) {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  .pagination-container {
+    &.container {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 45px;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 5px;
+        background-color: $LightGray;
+
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 140%; /* 33.6px */
+        letter-spacing: 0.12px;
+        color: $MediumGray;
+      }
+    }
+
+    @media only screen and (max-width: $Tablette) {
+      .pagination {
+        gap: 16px;
+      }
+    }
+
+    @media only screen and (max-width: $Mobile) {
+      .pagination {
+        gap: 12px;
+        li {
+          width: 40px;
+          height: 40px;
+
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
